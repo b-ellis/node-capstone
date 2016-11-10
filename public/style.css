@@ -1,0 +1,29 @@
+body{
+    margin: 15px !important;
+}
+button{
+    float: right;
+}
+#fav-container{
+    margin-top: 15px;
+}
+.well{
+    height: 125px;
+}
+.hidden{
+    display: none;
+}
+.fa-star-o{
+    margin: 5px;
+    float: right;
+}
+.form-inline{
+    text-align: center;
+    margin: 15px;
+}
+#search-box{
+    width: 30%;
+}
+.home{
+    display: none;
+}

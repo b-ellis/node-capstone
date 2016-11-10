@@ -4,14 +4,50 @@
     <meta charset="UTF-8">
     <title>Favorite Tabs</title>
     <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <form>
-        <input type="text" name="search" placeholder="Search artist..." id="search-box"/>
-        <input type="submit" value="Submit" id="submit"/>
-    </form>
-    <div id='search-results'></div>
+    <div id="nav">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="#" class="home">Home</a></li></li>
+            <li role="presentation"><a href="#" id="favorites">Favorites</a></li></li>
+        </ul>
+    </div>
+    <div id="main-page">
+            <form class= "form-inline">
+                <input type="text" name="search" placeholder="Search artist..." id="search-box" class="form-control">
+                <input type="submit" value="Submit" id="submit" class="btn btn-default"/>
+            </form>
+        <div class='template hidden well well-lg col-md-4'>
+            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+            <dl class="search-results">
+                <dt>Artist:</dt>
+                    <dd class="artist"></dd>
+                <dt>Song:</dt>
+                    <dd class="song"><a class="url" href="" target="_blank"></a></dd>
+                    <dd class="song-id hidden"></dd>
+            </dl>
+        </div>
+        <div id="container"></div>
+    </div>
+    <div id="favorite-page" display='none'>
+        <div class= "fav-temp hidden well well-lg col-md-4">
+            <button class='delete btn btn-default'>Delete</button>
+            <dl class="search-results">
+                <dt>Artist:</dt>
+                    <dd class="artist"></dd>
+                <dt>Song:</dt>
+                    <dd class= "song"><a class="url" href="" target="_blank"></a></dd>
+                <dt class="hidden">ID:</dt>
+                    <dd class="id hidden"></dd>
+            </dl>
+        </div>
+        <div id="fav-container"></div>
+    </div>
     
+    
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
