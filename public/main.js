@@ -105,6 +105,14 @@ var deleteFavorite = function(id) {
 };
 
 $(document).ready(function() {
+    $('#home-tab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show')
+    });
+     $('#fav-tab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show')
+    });
     $('form').submit(function(event) {
         event.preventDefault();
         $('#container').html('');

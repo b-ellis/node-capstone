@@ -8,12 +8,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="nav">
-        <ul class="nav nav-tabs nav-justified">
-            <li role="presentation"><a href="#" class="home">Home</a></li></li>
-            <li role="presentation"><a href="#" id="favorites">Favorites</a></li></li>
+        <ul class="nav nav-tabs">
+            <li id="home-tab" role="presentation" class="active"><a href="#" class="home" role="tab" data-toggle="tab">Home</a></li></li>
+            <li id="fav-tab" role="presentation"><a href="#" id="favorites" role="tab" data-toggle="tab">Favorites</a></li></li>
         </ul>
-    </div>
     <div id="main-page">
             <form class= "form-inline">
                 <input type="text" name="search" placeholder="Search artist..." id="search-box" class="form-control">
@@ -23,9 +21,9 @@
             <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
             <dl class="search-results">
                 <dt>Artist:</dt>
-                    <dd class="artist"></dd>
+                    <dd class="artist text-uppercase"></dd>
                 <dt>Song:</dt>
-                    <dd class="song"><a class="url" href="" target="_blank"></a></dd>
+                    <dd class="song text-uppercase"><a class="url" href="" target="_blank"></a></dd>
                     <dd class="song-id hidden"></dd>
             </dl>
         </div>
@@ -36,9 +34,9 @@
             <button class='delete btn btn-default'>Delete</button>
             <dl class="search-results">
                 <dt>Artist:</dt>
-                    <dd class="artist"></dd>
+                    <dd class="artist text-uppercase"></dd>
                 <dt>Song:</dt>
-                    <dd class= "song"><a class="url" href="" target="_blank"></a></dd>
+                    <dd class= "song text-uppercase"><a class="url" href="" target="_blank"></a></dd>
                 <dt class="hidden">ID:</dt>
                     <dd class="id hidden"></dd>
             </dl>
@@ -48,6 +46,7 @@
     
     
     <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
