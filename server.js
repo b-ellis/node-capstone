@@ -6,6 +6,8 @@ var mongoose = require('mongoose');
 var config = require('./config');
 
 var app = express();
+app.use(bodyParser.json());
+
 app.use(express.static('public'));
 // app.use(bodyParser.json());
 
@@ -14,7 +16,7 @@ var runServer = function(callback) {
         if (err && callback) {
             return callback(err);
         }
-        
+
         app.listen(config.PORT, function() {
             console.log('Listening on localhost:' + config.PORT);
             if (callback) {
@@ -67,18 +69,18 @@ app.get('/favorites', function(req, res) {
 });
 
 app.post('/favorites', function(req, res) {
-    console.log(req);
+    console.log(req.body);
     Item.create({
         name: req.body.name,
         title: req.body.title,
         song_id: req.body.song_id
-    }, function(err) {
+    }, function(err, item) {
         if(err) {
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
         }
-        res.json({status: 'true'});
+        return res.json({status: 'true'});
     });
 });
 
