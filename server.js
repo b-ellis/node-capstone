@@ -9,7 +9,7 @@ var app = express();
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-// app.use(bodyParser.json());
+
 
 var runServer = function(callback) {
     mongoose.connect(config.DATABASE_URL, function(err){
@@ -47,6 +47,8 @@ var getTabs = function(endpoint) {
     return emitter;
 };
 
+var Item = require('./models/item');
+
 app.get('/search/:name', function(req, res) {
     var name = req.params.name;
     var result = getTabs(name);
@@ -54,8 +56,6 @@ app.get('/search/:name', function(req, res) {
         res.json(item);
     });
 });
-
-var Item = require('./models/item');
 
 app.get('/favorites', function(req, res) {
     Item.find(function(err, item) {
@@ -69,7 +69,6 @@ app.get('/favorites', function(req, res) {
 });
 
 app.post('/favorites', function(req, res) {
-    console.log(req.body);
     Item.create({
         name: req.body.name,
         title: req.body.title,

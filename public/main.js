@@ -74,6 +74,7 @@ var returnHome = function(){
     $('.home').click(function() {
         $('#favorites-page').hide();
         $('#main-page').show();
+        $('#container').show();
         $('#fav-container').empty();
     });
 };
@@ -92,6 +93,7 @@ var addToFavorites = function(name, title, id) {
     }).done(function(res) {
         if(res.status === 'true') {
             $(itemToEdit).css('color', 'gold');
+            $(itemToEdit).unbind('click');
         }
     });
 };
@@ -129,7 +131,7 @@ $(document).ready(function() {
     $('#favorites').click(function(event) {
         event.preventDefault();
         getFavorites();
-        $('#container').empty();
+        $('#container').hide();
     });
     $('.delete').click(function() {
         var id = $(this).parent().children("dl").children('.id').text();

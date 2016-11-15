@@ -14,5 +14,9 @@
     "mongodb": "^2.2.11",
     "mongoose": "^4.6.5",
     "unirest": "^0.5.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0"
   }
 }
