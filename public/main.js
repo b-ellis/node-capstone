@@ -26,6 +26,11 @@ var showResults = function(data) {
 
     var songIdElm = results.find('.song-id');
     songIdElm.text(data.id);
+    
+    var starElm = results.find('fa-star-o');
+    if(data.star == true){
+        starElm.css('color', 'gold');
+    }
 
     results.removeClass('hidden');
 

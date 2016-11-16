@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
+var Item = require('./models/item');
+
 
 var runServer = function(callback) {
     mongoose.connect(config.DATABASE_URL, function(err){
@@ -38,16 +40,25 @@ var getTabs = function(endpoint) {
     var emitter = new events.EventEmitter();
     unirest.get('http://www.songsterr.com/a/ra/songs.json?pattern=' + endpoint)
     .end(function(response) {
-        if (response.ok) {
-            emitter.emit('end', response.body);
-        } else {
-            console.log('could not fetch data');
+        var done = response.body.length;
+        for(var i = 0; i < response.body.length; i++){
+            (function(index) {
+                Item.find({song_id: response.body[index].id}, function(err, item) {
+                    if(!err) {
+                        response.body[index].star = true;
+                    } else {
+                        response.body[index].star = false;
+                    }
+                    done--;
+                    if(done == 0){
+                        emitter.emit('end', response.body);
+                    }
+                });    
+            })(i);
         }
     });
     return emitter;
 };
-
-var Item = require('./models/item');
 
 app.get('/search/:name', function(req, res) {
     var name = req.params.name;
