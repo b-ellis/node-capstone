@@ -27,9 +27,10 @@ var showResults = function(data) {
     var songIdElm = results.find('.song-id');
     songIdElm.text(data.id);
     
-    var starElm = results.find('fa-star-o');
+    var starElm = results.find('.fa-star-o');
     if(data.star == true){
         starElm.css('color', 'gold');
+        starElm.unbind('click');
     }
 
     results.removeClass('hidden');
@@ -78,6 +79,7 @@ var showFavorites = function (data) {
 var returnHome = function(){
     $('.home').click(function() {
         $('#favorites-page').hide();
+        $('.form-inline').show();
         $('#main-page').show();
         $('#container').show();
         $('#fav-container').empty();
@@ -136,6 +138,7 @@ $(document).ready(function() {
     $('#favorites').click(function(event) {
         event.preventDefault();
         getFavorites();
+        $('.form-inline').hide();
         $('#container').hide();
     });
     $('.delete').click(function() {

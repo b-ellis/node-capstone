@@ -44,16 +44,18 @@ var getTabs = function(endpoint) {
         for(var i = 0; i < response.body.length; i++){
             (function(index) {
                 Item.find({song_id: response.body[index].id}, function(err, item) {
-                    if(!err) {
-                        response.body[index].star = true;
-                    } else {
-                        response.body[index].star = false;
+                    for(var j = 0; j < item.length; j++){
+                        if(!err) {
+                            response.body[index].star = true;
+                        } else {
+                            response.body[index].star = false;
+                        }
                     }
                     done--;
                     if(done == 0){
                         emitter.emit('end', response.body);
                     }
-                });    
+                });
             })(i);
         }
     });

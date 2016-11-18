@@ -11,26 +11,26 @@ chai.use(chaiHttp);
 describe('Favorite Tabs', function() {
     it('should list items on get', function(done) {
         chai.request(app)
-        .get('/favorites')
-        .end(function(err, res){
-            
-            done();
+            .get('/favorites')
+            .end(function(err, res){
+                res.should.have.status(200);
+                done();
         });
     });
     it('should post items on post', function(done) {
        chai.request(app)
-       .get('/favorites')
-       .end(function(err, res) {
+        //   .get('/favorites')
+          .end(function(err, res) {
            
-           done();
-       });
+                done();
+            });
     });
     it('should delete items on delete', function(done) {
         chai.request(app)
-        .get('/favorites')
-        .end(function(err, res){
-            
-            done();
-        });
+            // .get('/favorites')
+            .end(function(err, res){
+                
+                done();
+            });
     });
 });
