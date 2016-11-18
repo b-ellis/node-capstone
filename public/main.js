@@ -26,7 +26,7 @@ var showResults = function(data) {
 
     var songIdElm = results.find('.song-id');
     songIdElm.text(data.id);
-    
+
     var starElm = results.find('.fa-star-o');
     if(data.star == true){
         starElm.css('color', 'gold');
@@ -117,7 +117,7 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).tab('show')
     });
-     $('#fav-tab a').click(function (e) {
+    $('#fav-tab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show')
     });

@@ -7,11 +7,9 @@ var config = require('./config');
 
 var app = express();
 app.use(bodyParser.json());
-
 app.use(express.static('public'));
 
 var Item = require('./models/item');
-
 
 var runServer = function(callback) {
     mongoose.connect(config.DATABASE_URL, function(err){
@@ -32,6 +30,8 @@ if (require.main === module) {
     runServer(function(err) {
         if (err) {
             console.error(err);
+        } else {
+            console.log("Server up and running well!");
         }
     });
 }
@@ -44,12 +44,10 @@ var getTabs = function(endpoint) {
         for(var i = 0; i < response.body.length; i++){
             (function(index) {
                 Item.find({song_id: response.body[index].id}, function(err, item) {
-                    for(var j = 0; j < item.length; j++){
-                        if(!err) {
-                            response.body[index].star = true;
-                        } else {
-                            response.body[index].star = false;
-                        }
+                    if(item.length > 0) {
+                        response.body[index].star = true;
+                    } else {
+                        response.body[index].star = false;
                     }
                     done--;
                     if(done == 0){
@@ -64,6 +62,9 @@ var getTabs = function(endpoint) {
 
 app.get('/search/:name', function(req, res) {
     var name = req.params.name;
+    if (!name) {
+        res.status(404).json({status: "no name parameter provided in request."});
+    }
     var result = getTabs(name);
     result.on('end', function(item) {
         res.json(item);
@@ -107,3 +108,6 @@ app.delete('/favorites/:id', function(req, res) {
         res.status(201).json(item);
     });
 });
+
+exports.app = app;
+exports.runServer = runServer;
