@@ -73,6 +73,9 @@ app.get('/search/:name', function(req, res) {
     result.on('end', function(item) {
         res.json(item);
     });
+    result.on('error', function(err) {
+        res.status(404).json({status: "Weren't able to contact songsterr api."});
+    });
 });
 
 app.get('/favorites', function(req, res) {
@@ -94,7 +97,7 @@ app.post('/favorites', function(req, res) {
     }, function(err, item) {
         if(err) {
             return res.status(404).json({
-                message: 'Could not add itemto favorites'
+                message: 'Could not add item to favorites'
             });
         }
         return res.json({status: 'true'});
@@ -104,6 +107,7 @@ app.post('/favorites', function(req, res) {
 app.delete('/favorites/:id', function(req, res) {
     var id = req.params.id;
     Item.findOneAndRemove(id, function(err, item) {
+        console.log("error " + err);
         if(err) {
             return res.status(404).json({
                 message: 'Could not remove item from favorites'

@@ -32,11 +32,12 @@ describe('Tests', function() {
                 .end(function(err, res) {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.should.have.length(15);
+                    //check up on figuring out how to check if greater than
+                    // res.body.should.have.length();
                     done();
                 });
         });
-        it('should list items on get', function(done) {
+        it('should list favorite items on get', function(done) {
             chai.request(app)
                 .get('/favorites')
                 .end(function(err, res){
@@ -77,21 +78,10 @@ describe('Tests', function() {
                     done();
                 });
         });
-        it('should delete items on delete', function(done) {
-            chai.request(app)
-                .get('/favorites/582fc9b32e4bd616cb76cd4f')
-                .end(function(err, res){
-                    res.should.not.be.a('onject');
-                    res.body.should.not.have.property('name');
-                    res.body.should.not.have.property('title');
-                    res.body.should.not.have.property('song_id');
-                    done();
-                });
-        });
     });
     after(function(done){
         Item.remove(function(){
-           done(); 
+          done(); 
         });
     });
 });
