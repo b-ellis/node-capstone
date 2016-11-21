@@ -40,21 +40,25 @@ var getTabs = function(endpoint) {
     var emitter = new events.EventEmitter();
     unirest.get('http://www.songsterr.com/a/ra/songs.json?pattern=' + endpoint)
     .end(function(response) {
-        var done = response.body.length;
-        for(var i = 0; i < response.body.length; i++){
-            (function(index) {
-                Item.find({song_id: response.body[index].id}, function(err, item) {
-                    if(item.length > 0) {
-                        response.body[index].star = true;
-                    } else {
-                        response.body[index].star = false;
-                    }
-                    done--;
-                    if(done == 0){
-                        emitter.emit('end', response.body);
-                    }
-                });
-            })(i);
+        if(response.ok){
+           var done = response.body.length;
+            for(var i = 0; i < response.body.length; i++){
+                (function(index) {
+                    Item.find({song_id: response.body[index].id}, function(err, item) {
+                        if(item.length > 0) {
+                            response.body[index].star = true;
+                        } else {
+                            response.body[index].star = false;
+                        }
+                        done--;
+                        if(done == 0){
+                            emitter.emit('end', response.body);
+                        }
+                    });
+                })(i);
+            } 
+        } else {
+            emitter.emit('error', response.code);
         }
     });
     return emitter;
@@ -74,8 +78,8 @@ app.get('/search/:name', function(req, res) {
 app.get('/favorites', function(req, res) {
     Item.find(function(err, item) {
         if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
+            return res.status(404).json({
+                message: 'Could not retrieve favorites'
             });
         }
         res.json(item);
@@ -89,8 +93,8 @@ app.post('/favorites', function(req, res) {
         song_id: req.body.song_id
     }, function(err, item) {
         if(err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
+            return res.status(404).json({
+                message: 'Could not add itemto favorites'
             });
         }
         return res.json({status: 'true'});
@@ -101,8 +105,8 @@ app.delete('/favorites/:id', function(req, res) {
     var id = req.params.id;
     Item.findOneAndRemove(id, function(err, item) {
         if(err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
+            return res.status(404).json({
+                message: 'Could not remove item from favorites'
             });
         }
         res.status(201).json(item);
