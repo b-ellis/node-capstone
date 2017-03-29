@@ -4,12 +4,26 @@ body{
 button{
     float: right;
 }
+dl{
+    font-family: 'Raleway', sans-serif;
+}
+dt{
+    font-family: 'Raleway', sans-serif;
+}
+dd{
+    font-family: 'Raleway', sans-serif;
+}
 #fav-container{
     margin-top: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+#favorite-page{
+    font-family: 'Raleway', sans-serif;
 }
 .nav > li{
     width: 200px;
     text-align: center;
+    font-family: 'Raleway', sans-serif;
 }
 .well{
     height: 125px;
@@ -25,10 +39,28 @@ button{
 .form-inline{
     margin-top: 15px;
     margin-bottom: 15px;
+    text-align: center;
 }
 #search-box{
     width: 30%;
+    font-family: 'Raleway', sans-serif;
 }
 .home{
     display: none;
+}
+.brand-div{
+    text-align: center;
+    margin: 10px;
+}
+.guitar{
+    width: 3%;
+}
+.brand{
+    display: inline-flex;
+    text-align: left;
+    font-family: 'Berkshire Swash', cursive;
+    color: #9294b5;
+}
+.title-div{
+    display: -webkit-inline-box;
 }
