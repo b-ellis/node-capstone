@@ -106,7 +106,7 @@ app.post('/favorites', function(req, res) {
 
 app.delete('/favorites/:id', function(req, res) {
     var id = req.params.id;
-    Item.findOneAndRemove(id, function(err, item) {
+    Item.findOneAndRemove({song_id:id}, function(err, item) {
         console.log("error " + err);
         if(err) {
             return res.status(404).json({

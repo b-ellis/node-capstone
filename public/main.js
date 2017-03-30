@@ -68,7 +68,7 @@ var showFavorites = function (data) {
     songElm.text(data.title);
 
     var idElm = results.find('.id');
-    idElm.text(data._id);
+    idElm.text(data.song_id);
 
     results.removeClass('hidden');
 
