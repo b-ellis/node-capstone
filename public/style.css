@@ -47,6 +47,10 @@ h5{
 #search-box{
     width: 30%;
     font-family: 'Raleway', sans-serif;
+    display: -webkit-inline-box;
+}
+#submit{
+    display: -webkit-inline-box;
 }
 .home{
     display: none;
@@ -67,3 +71,4 @@ h5{
 .title-div{
     display: -webkit-inline-box;
 }
+@media screens only and (max-width: 767)
