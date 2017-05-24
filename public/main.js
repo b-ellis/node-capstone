@@ -13,7 +13,21 @@ var getResults = function(name) {
 
 var showResults = function(data) {
 
-    var url = "https://www.songsterr.com/a/wsa/" + data.artist.name + "-" + data.title + "-tab-g-s" + data.id;
+    var url;
+    
+    switch(data.tabTypes[0]){
+        case 'PLAYER':
+            url = "https://www.songsterr.com/a/wsa/" + data.artist.name + "-" + data.title + "-tab-s" + data.id;
+            break;
+            
+        case 'TEXT_GUITAR_TAB':
+            url = "https://www.songsterr.com/a/wsa/" + data.artist.name + "-" + data.title + "-tab-g-s" + data.id;
+            break;    
+        
+        case 'CHORDS':
+            url ="https://www.songsterr.com/a/wsa/" + data.artist.name + "-" + data.title + "-chords-s" + data.id;
+            break;
+    }
 
     var results = $('.template.hidden').clone(true, true);
 
@@ -56,7 +70,7 @@ var showFavorites = function (data) {
     $('#main-page').hide();
     $('#favorite-page').show();
     $('#fav-container').show();
-    var url = "https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-tab-g-s" + data.song_id;
+    var url = "https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-chords-s" + data.song_id;
 
     var results = $('.fav-temp.hidden').clone(true, true);
 
@@ -82,7 +96,7 @@ var returnHome = function(){
         $('.form-inline').show();
         $('#main-page').show();
         $('#container').show();
-        $('#fav-container').empty();
+        // $('#fav-container').empty();
     });
 };
 
@@ -113,9 +127,14 @@ var deleteFavorite = function(id) {
 };
 
 $(document).ready(function() {
+
     $('#home-tab a').click(function (e) {
         e.preventDefault();
-        $(this).tab('show')
+        $(this).tab('show');
+        $('#favorite-page').hide();
+        $('.form-inline').show();
+        $('#container').show();
+        $('#main-page').css('display', 'block');
     });
     $('#fav-tab a').click(function (e) {
         e.preventDefault();

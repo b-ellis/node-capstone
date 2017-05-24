@@ -9,24 +9,28 @@
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Raleway" rel="stylesheet">
 </head>
 <body>
-        <ul class="nav nav-tabs">
-            <li id="home-tab" role="presentation" class="active"><a href="#" class="home" role="tab" data-toggle="tab">Home</a></li></li>
-            <li id="fav-tab" role="presentation"><a href="#" id="favorites" role="tab" data-toggle="tab">Favorites</a></li></li>
-        </ul>
-        <div class='brand-div'>
-            <img class='guitar' src='./guitar-head.png' />
-            <div class='title-div'>
-                <h3 class='brand'>Favorite <br /> Guitar Tabs</h3>
-            </div>
-            <div>
-                <h5>Built by <a href='https://b-ellis.github.io/Portfolio/'>Brad Ellis</a></h5>
-            </div>
-        </div>
-    <div id="main-page">
-            <form class= "form-inline">
-                <input type="text" name="search" placeholder="Search artist..." id="search-box" class="form-control" required>
-                <input type="submit" value="Submit" id="submit" class="btn btn-default"/>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <a class="navbar-brand" href="#">TABS</a>
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item active" id="home-tab" role="presentation" class="active">
+                    <a href="#" class="nav-link" role="tab" data-toggle="tab">Home</a>
+                </li>
+                <li class="nav-item" id="fav-tab" role="presentation">
+                    <a href="#" id="favorites" class='nav-link' role="tab" data-toggle="tab">Favorite</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search-box" class="form-control">
+                <button id="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+        </div>
+    </nav>
+    <div class='landing'>
+        <img src='./images/guitar.jpg' class='expand' />
+    </div>
+    <div id="main-page">
         <div class='template hidden well well-lg col-md-4 col-sm-4'>
             <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
             <dl class="search-results">

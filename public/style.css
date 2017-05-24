@@ -1,5 +1,5 @@
 body{
-    margin: 15px !important;
+    
 }
 button{
     float: right;
@@ -15,6 +15,35 @@ dd{
 }
 h5{
     font-family: 'Raleway', sans-serif;
+}
+.navbar{
+    margin: 0px !important;
+    position: fixed !important;
+    width: 100%;
+    z-index: 100;
+    opacity: .9;
+    background: rgba(255, 255, 255, 0.64);
+}
+.navbar-nav{
+    list-style: none;
+    padding: 1em;
+}
+.home{
+    padding-right: 4rem;
+    padding-left: 2rem;
+}
+.nav-link{
+    margin: 4rem;
+}
+.landing{
+    background: black;
+}
+img{
+    width: 2em;
+    opacity: .5;
+}
+.expand{
+    width: 100%;
 }
 #fav-container{
     margin-top: 15px;
@@ -40,9 +69,8 @@ h5{
     cursor: pointer;
 }
 .form-inline{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: center;
+    margin-top: 8px;
+    text-align: right;
 }
 #search-box{
     width: 30%;
@@ -71,4 +99,12 @@ h5{
 .title-div{
     display: -webkit-inline-box;
 }
-@media screens only and (max-width: 767)
+
+@media (min-width: 768px){
+    .form-inline .form-control {
+        display: inline-block;
+        width: 30rem;
+        vertical-align: middle;
+        margin-right: .5rem;
+    }
+}

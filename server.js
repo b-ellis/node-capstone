@@ -4,10 +4,12 @@ var events = require('events');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var config = require('./config');
+var path = require('path');
 
 var app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 var Item = require('./models/item');
 
@@ -63,6 +65,7 @@ var getTabs = function(endpoint) {
     });
     return emitter;
 };
+
 
 app.get('/search/:name', function(req, res) {
     var name = req.params.name;
