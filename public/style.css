@@ -1,5 +1,4 @@
 body{
-    
 }
 button{
     float: right;
@@ -48,9 +47,15 @@ img{
 #fav-container{
     margin-top: 15px;
     font-family: 'Raleway', sans-serif;
+    padding-top: 7rem;
 }
 #favorite-page{
     font-family: 'Raleway', sans-serif;
+}
+#main-page{
+}
+#container{
+ padding-top: 7rem;   
 }
 .nav > li{
     width: 200px;
@@ -71,6 +76,57 @@ img{
 .form-inline{
     margin-top: 8px;
     text-align: right;
+}
+.header-form{
+    display: none;
+}
+
+.descripton{
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    float: right;
+    background: #b0b0b0;
+    text-align: center;
+    height: 50rem;
+    width: 45rem;
+    border-radius: 1rem;
+    box-shadow: 1rem 1rem 10px -2px;
+}
+
+.about{
+    margin: auto;
+    padding: 2rem 0rem 0rem 0rem;
+    text-align: center;
+    width: 45%;
+}
+
+.about-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 4rem 3rem 0rem 1rem;
+}
+
+.about-list > li{
+    padding: 3rem;
+}
+
+.landing-search{
+    margin-top: 7rem;
+    text-align: center;
+}
+
+.landing-input{
+    width: 55% !important;
+    font-family: 'Raleway', sans-serif;
+    display: -webkit-inline-box;
+}
+
+.landing-button{
+    float: none;
+    background: white;
 }
 #search-box{
     width: 30%;

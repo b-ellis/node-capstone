@@ -96,7 +96,7 @@ var returnHome = function(){
         $('.form-inline').show();
         $('#main-page').show();
         $('#container').show();
-        // $('#fav-container').empty();
+        $('#fav-container').empty();
     });
 };
 
@@ -131,13 +131,17 @@ $(document).ready(function() {
     $('#home-tab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
+        $('.landing').hide();
         $('#favorite-page').hide();
+        $('.header-form').show();
         $('.form-inline').show();
         $('#container').show();
         $('#main-page').css('display', 'block');
+        $('#fav-container').empty();
     });
     $('#fav-tab a').click(function (e) {
         e.preventDefault();
+        $('.landing').hide();
         $(this).tab('show')
     });
     $('form').submit(function(event) {
