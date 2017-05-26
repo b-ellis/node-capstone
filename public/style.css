@@ -15,6 +15,12 @@ dd{
 h5{
     font-family: 'Raleway', sans-serif;
 }
+.navbar-brand {
+    color: #112a3f;
+}
+.navbar-nav > li > a{
+    color: #112a3f;
+}
 .navbar{
     margin: 0px !important;
     position: fixed !important;
