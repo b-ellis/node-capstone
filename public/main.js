@@ -40,6 +40,9 @@ var showResults = function(data) {
 
     var songIdElm = results.find('.song-id');
     songIdElm.text(data.id);
+    
+    var tabTypeElm = results.find('.tab-type');
+    tabTypeElm.html(data.tabTypes[0]);
 
     var starElm = results.find('.fa-star-o');
     if(data.star == true){
@@ -70,7 +73,22 @@ var showFavorites = function (data) {
     $('#main-page').hide();
     $('#favorite-page').show();
     $('#fav-container').show();
-    var url = "https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-chords-s" + data.song_id;
+    
+    var url;
+    
+    switch(data.tabType){
+        case 'PLAYER':
+            url = "https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-tab-s" + data.song_id;
+            break;
+            
+        case 'TEXT_GUITAR_TAB':
+            url = "https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-tab-g-s" + data.song_id;
+            break;    
+        
+        case 'CHORDS':
+            url ="https://www.songsterr.com/a/wsa/" + data.name + "-" + data.title + "-chords-s" + data.song_id;
+            break;
+    }
 
     var results = $('.fav-temp.hidden').clone(true, true);
 
@@ -100,8 +118,8 @@ var returnHome = function(){
     });
 };
 
-var addToFavorites = function(name, title, id) {
-    var item = {'name': name, 'title': title, 'song_id': id};
+var addToFavorites = function(name, title, id, tabType) {
+    var item = {'name': name, 'title': title, 'song_id': id, 'tabType': tabType };
     var itemToEdit = this; // we need to save the bound this to variable itemToEdit
     // because this inside the ajax.done function will not refer to the html star
     // element that we want to color, so we save reference here and access it inside
@@ -144,7 +162,7 @@ $(document).ready(function() {
         $('.landing').hide();
         $(this).tab('show')
     });
-    $('form').submit(function(event) {
+    $('.landing-search').submit(function(event) {
         event.preventDefault();
         $('#container').html('');
         var val = $('#search-box').val();
@@ -152,6 +170,15 @@ $(document).ready(function() {
         $('.landing').hide();
         $('.header-form').show();
         $('#search-box').val("");
+        $('#main-page').css('display', 'block');
+        $('#container').show();
+    });
+    $('.header-form').submit(function(event) {
+        event.preventDefault();
+        $('#container').html('');
+        var val = $('.form-control').val();
+        getResults(val);
+        $('.form-control').val("");
         $('#container').show();
     });
       $('.navbar-brand').click(function(event){
@@ -165,8 +192,9 @@ $(document).ready(function() {
         var name = $(this).parent().children('dl').children('.artist').text();
         var title = $(this).parent().children('dl').children('.song').text();
         var songId = $(this).parent().children('dl').children('.song-id').text();
+        var tabType = $(this).parent().children('dl').children('.tab-type').text();
         var addToFavs = addToFavorites.bind(this);
-        addToFavs(name, title, songId);
+        addToFavs(name, title, songId, tabType);
     });
     $('#favorites').click(function(event) {
         event.preventDefault();

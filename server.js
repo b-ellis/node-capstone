@@ -96,7 +96,8 @@ app.post('/favorites', function(req, res) {
     Item.create({
         name: req.body.name,
         title: req.body.title,
-        song_id: req.body.song_id
+        song_id: req.body.song_id,
+        tabType: req.body.tabType
     }, function(err, item) {
         if(err) {
             return res.status(404).json({
@@ -110,7 +111,6 @@ app.post('/favorites', function(req, res) {
 app.delete('/favorites/:id', function(req, res) {
     var id = req.params.id;
     Item.findOneAndRemove({song_id:id}, function(err, item) {
-        console.log("error " + err);
         if(err) {
             return res.status(404).json({
                 message: 'Could not remove item from favorites'
