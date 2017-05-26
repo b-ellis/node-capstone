@@ -48,14 +48,17 @@ img{
     margin-top: 15px;
     font-family: 'Raleway', sans-serif;
     padding-top: 7rem;
+    display: none;
 }
+
 #favorite-page{
     font-family: 'Raleway', sans-serif;
 }
 #main-page{
 }
 #container{
- padding-top: 7rem;   
+ padding-top: 7rem;  
+ display: none;
 }
 .nav > li{
     width: 200px;
@@ -82,7 +85,7 @@ img{
 }
 
 .descripton{
-    position: absolute;
+    position: absolute !important;
     top: 15%;
     left: 60%;
     float: right;
@@ -159,7 +162,7 @@ img{
 @media (min-width: 768px){
     .form-inline .form-control {
         display: inline-block;
-        width: 30rem;
+        width: 30rem !important;
         vertical-align: middle;
         margin-right: .5rem;
     }

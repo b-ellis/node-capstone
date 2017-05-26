@@ -149,8 +149,18 @@ $(document).ready(function() {
         $('#container').html('');
         var val = $('#search-box').val();
         getResults(val);
+        $('.landing').hide();
+        $('.header-form').show();
         $('#search-box').val("");
+        $('#container').show();
     });
+      $('.navbar-brand').click(function(event){
+        event.preventDefault();
+        $('#main-page').hide();
+        $('#favorite-page').hide();
+        $('.header-form').hide();
+        $('.landing').show();
+    })
     $('.fa-star-o').click(function() {
         var name = $(this).parent().children('dl').children('.artist').text();
         var title = $(this).parent().children('dl').children('.song').text();
