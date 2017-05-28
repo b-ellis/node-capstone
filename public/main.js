@@ -187,6 +187,7 @@ $(document).ready(function() {
         $('#favorite-page').hide();
         $('.header-form').hide();
         $('.landing').show();
+        $('.landing-search').show();
     })
     $('.fa-star-o').click(function() {
         var name = $(this).parent().children('dl').children('.artist').text();
